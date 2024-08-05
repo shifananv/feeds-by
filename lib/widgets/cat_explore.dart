@@ -17,7 +17,7 @@ class CatExplore extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 298,
+      height: 176,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -53,10 +53,10 @@ class CatExplore extends StatelessWidget {
             height: 15,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 8,right: 8,),
             child: SizedBox(
               width: double.maxFinite,
-              height: 222.0,
+              height: 141.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 2,
@@ -72,7 +72,6 @@ class CatExplore extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 25,)
         ],
       ),
     );

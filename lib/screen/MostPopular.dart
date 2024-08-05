@@ -1,3 +1,4 @@
+import 'package:feeds/screen/Discover_Page.dart';
 import 'package:feeds/screen/home_page.dart';
 import 'package:feeds/widgets/Listview_container.dart';
 import 'package:feeds/widgets/article_banner%20copy.dart';
@@ -5,14 +6,14 @@ import 'package:feeds/widgets/article_banner.dart';
 import 'package:feeds/widgets/grid_card.dart';
 import 'package:flutter/material.dart';
 
-class MyBookmark extends StatefulWidget {
-  const MyBookmark({super.key});
+class MostPopular extends StatefulWidget {
+  const MostPopular({super.key});
 
   @override
-  State<MyBookmark> createState() => _MyBookmarkState();
+  State<MostPopular> createState() => _MostPopularState();
 }
 
-class _MyBookmarkState extends State<MyBookmark> {
+class _MostPopularState extends State<MostPopular> {
   bool isIcon1Clicked = false; // Track if icon 1 is clicked
   bool isIcon2Clicked = false; // Track if icon 2 is clicked
   bool isGridMode = true; // Track current mode: grid or list
@@ -32,10 +33,10 @@ class _MyBookmarkState extends State<MyBookmark> {
           children: [
             GestureDetector(
               onTap: () {
-               Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DiscoverPage()));
               },
               child: const Icon(
                 Icons.arrow_back,
@@ -43,9 +44,11 @@ class _MyBookmarkState extends State<MyBookmark> {
                 color: Color(0xFF260446),
               ),
             ),
-            const SizedBox(width: 4,),
+            const SizedBox(
+              width: 4,
+            ),
             const Text(
-              'My Bookmarks',
+              'Most Popular',
               style: TextStyle(
                 color: Color(0xFF260446),
                 fontSize: 16,
@@ -72,7 +75,7 @@ class _MyBookmarkState extends State<MyBookmark> {
           ),
         ],
       ),
-      body:Padding(
+      body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -117,7 +120,6 @@ class _MyBookmarkState extends State<MyBookmark> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-
                         isIcon2Clicked = !isIcon2Clicked;
                         isIcon1Clicked = false;
                         isGridMode =
@@ -147,31 +149,33 @@ class _MyBookmarkState extends State<MyBookmark> {
 
   Widget buildGridView() {
     return GridView.builder(
-          padding: const EdgeInsets.all(0),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // 2 elements in a row
-            mainAxisSpacing: 0,
-            crossAxisSpacing: 32,
-            childAspectRatio: 1/2, // Adjust ratio to fit your card's dimensions
-          ), // SliverGridDelegateWithFixedCrossAxisCount
-          itemBuilder: (context, index) {
-            return const GridCard();
-          }, // itemBuilder
-          itemCount: 20,
-          shrinkWrap: true, // 2 rows * 10 columns
-        );
+      padding: const EdgeInsets.all(0),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // 2 elements in a row
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 32,
+        childAspectRatio: 1 / 2, // Adjust ratio to fit your card's dimensions
+      ), // SliverGridDelegateWithFixedCrossAxisCount
+      itemBuilder: (context, index) {
+        return const GridCard();
+      }, // itemBuilder
+      itemCount: 20,
+      shrinkWrap: true, // 2 rows * 10 columns
+    );
   }
 
   Widget buildListView() {
     return ListView.builder(
       itemCount: 6,
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(), 
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return const Column(
           children: [
             ListContainer(),
-            SizedBox(height: 20,)
+            SizedBox(
+              height: 20,
+            )
           ],
         );
       },

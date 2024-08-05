@@ -1,4 +1,5 @@
 import 'package:feeds/screen/Discover_Page.dart';
+import 'package:feeds/screen/create_new.dart';
 import 'package:feeds/screen/my_bookmark.dart';
 import 'package:feeds/widgets/article_slider.dart';
 import 'package:feeds/widgets/home_explore.dart';
@@ -64,7 +65,12 @@ class _HomePageState extends State<HomePage> {
           Row(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CreateNew()),
+                  );
+                },
                 icon: const Icon(
                   Icons.add,
                   color: Color(0xFF414ECA),

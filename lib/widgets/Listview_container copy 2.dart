@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ListContainer extends StatefulWidget {
-  const ListContainer({super.key});
+class ListContainer3 extends StatefulWidget {
+  const ListContainer3({super.key});
 
   @override
-  State<ListContainer> createState() => _ListContainerState();
+  State<ListContainer3> createState() => _ListContainerState();
 }
 
-class _ListContainerState extends State<ListContainer> {
+class _ListContainerState extends State<ListContainer3> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -27,7 +27,7 @@ class _ListContainerState extends State<ListContainer> {
                 fit: BoxFit.fill,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(14),
               ),
             ),
           ),
@@ -54,35 +54,6 @@ class _ListContainerState extends State<ListContainer> {
               const SizedBox(
                 height: 5,
               ),
-              Row(
-                children: [
-                  Container(
-                    width: 18,
-                    height: 18,
-                    decoration:  const ShapeDecoration(
-                      image: DecorationImage(
-                        image:
-                            AssetImage('assets/images/cat.png'),
-                        fit: BoxFit.fill,
-                      ),
-                      shape: OvalBorder(),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Text(
-                    'James Hok',
-                    style: TextStyle(
-                      color: Color(0xFF414ECA),
-                      fontSize: 10,
-                      fontFamily: 'Nunito',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ],
-              ),
                 Row(
                 children: [
                   const Text(
@@ -97,9 +68,9 @@ class _ListContainerState extends State<ListContainer> {
                   ),
                   SizedBox(width: screenWidth*0.363,),
                   const Icon(
-                    Icons.bookmark,
+                    Icons.app_registration_rounded,
                     size: 18,
-                    color: Color(0xFF414ECA),
+                    color: Color.fromARGB(255, 130, 130, 130),
                   ),
                   const Icon(Icons.more_vert,size: 18,color: Colors.grey,)
                 ],

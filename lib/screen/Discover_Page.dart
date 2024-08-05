@@ -1,11 +1,16 @@
 import 'dart:typed_data';
 
-import 'package:feeds/screen/Mostpopular_page.dart';
+import 'package:feeds/screen/Explore_by_topics.dart';
+import 'package:feeds/screen/MostPopular.dart';
+import 'package:feeds/screen/MyArtcles.dart';
+import 'package:feeds/screen/home_page.dart';
+import 'package:feeds/widgets/Listview_container.dart';
 import 'package:feeds/widgets/cat_explore.dart';
 import 'package:feeds/widgets/category_tile.dart';
 import 'package:feeds/widgets/home_explore.dart';
 import 'package:feeds/widgets/topwriter_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({super.key});
@@ -56,7 +61,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              width: 20,
+              width: 33,
             ),
             Image.asset('assets/images/infoshare.png'),
             const SizedBox(
@@ -74,21 +79,27 @@ class _DiscoverPageState extends State<DiscoverPage> {
             ),
           ],
         ),
-        actions: const [
-          Icon(
+        actions: [
+          const Icon(
             Icons.search,
             size: 22,
             color: Color(0xFF414ECA),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
-          Icon(
-            Icons.style_outlined,
-            size: 22,
-            color: Color(0xFF414ECA),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyArticles()));
+            },
+            child: const Icon(
+              Icons.style_outlined,
+              size: 22,
+              color: Color(0xFF414ECA),
+            ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
         ],
@@ -128,11 +139,91 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MostPopular()),
+                    MaterialPageRoute(
+                        builder: (context) => const MostPopular()),
                   );
                 },
               ),
-              const TopWriterSlider()
+              CatExplore(
+                articleNum: 100,
+                catName: 'AI',
+                framestitle: 'Explore by Topics',
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ExploreByTopics()));
+                },
+              ),
+              const TopWriterSlider(),
+              const SizedBox(
+                height: 20,
+              ),
+              HomeExplore(
+                frametitle: 'Our Recommendations',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MostPopular()),
+                  );
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    const Text(
+                      'New Articles',
+                      style: TextStyle(
+                        color: Color(0xFF39006F),
+                        fontSize: 16,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MostPopular()),
+                        );
+                      },
+                      child: const Icon(
+                        Icons.arrow_forward_sharp,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              SizedBox(
+                height: 1500,
+                child: ListView.builder(
+                  itemCount: 12,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return const Column(
+                      children: [
+                        ListContainer(),
+                        SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ListContainer extends StatefulWidget {
-  const ListContainer({super.key});
+class ListContainer2 extends StatefulWidget {
+  const ListContainer2({super.key});
 
   @override
-  State<ListContainer> createState() => _ListContainerState();
+  State<ListContainer2> createState() => _ListContainerState();
 }
 
-class _ListContainerState extends State<ListContainer> {
+class _ListContainerState extends State<ListContainer2> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -53,35 +53,6 @@ class _ListContainerState extends State<ListContainer> {
               ),
               const SizedBox(
                 height: 5,
-              ),
-              Row(
-                children: [
-                  Container(
-                    width: 18,
-                    height: 18,
-                    decoration:  const ShapeDecoration(
-                      image: DecorationImage(
-                        image:
-                            AssetImage('assets/images/cat.png'),
-                        fit: BoxFit.fill,
-                      ),
-                      shape: OvalBorder(),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Text(
-                    'James Hok',
-                    style: TextStyle(
-                      color: Color(0xFF414ECA),
-                      fontSize: 10,
-                      fontFamily: 'Nunito',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ],
               ),
                 Row(
                 children: [

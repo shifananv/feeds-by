@@ -1,4 +1,6 @@
+import 'package:feeds/screen/TopicDetailedscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CategoryTile extends StatelessWidget {
   final String catName;
@@ -11,19 +13,27 @@ class CategoryTile extends StatelessWidget {
 
     return Stack(
       children: [
-        Container(
-          width: screenWidth * 0.408,
-          height: 100,
-          clipBehavior: Clip.antiAlias,
-          decoration: ShapeDecoration(
-            color: const Color(0xB7414ECA),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TopicDetailedScreen()));
+          },
+          child: Container(
+            width: screenWidth * 0.404,
+            height: screenWidth * 0.270,
+            clipBehavior: Clip.antiAlias,
+            decoration: ShapeDecoration(
+              color: const Color.fromARGB(183, 3, 21, 185),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
+            child: Opacity(
+                opacity: 0.29,
+                child: Image.asset('assets/images/cat.png', fit: BoxFit.fill)),
           ),
-          child: Opacity(
-              opacity: 0.29,
-              child: Image.asset('assets/images/cat.png', fit: BoxFit.fill)),
         ),
          Positioned(
           top: 48,
@@ -36,7 +46,7 @@ class CategoryTile extends StatelessWidget {
               catName,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 18,
                 fontFamily: 'Nunito',
                 fontWeight: FontWeight.w700,
                 height: 0,
@@ -44,7 +54,7 @@ class CategoryTile extends StatelessWidget {
             ),
              Text(
               '$articleNum+ Articles',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 12,
                 fontFamily: 'Nunito',
